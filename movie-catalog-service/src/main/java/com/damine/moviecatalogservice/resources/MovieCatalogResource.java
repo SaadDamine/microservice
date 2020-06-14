@@ -23,7 +23,9 @@ public class MovieCatalogResource {
 
     @RequestMapping("/{userId}")
     public List<CatalogItem> getCatalog(@PathVariable("userId") String userId){
-        
+
+        WebClient
+
         //get all rated movies
         List<Rating> ratings= Arrays.asList(
                 new Rating("1",4),
