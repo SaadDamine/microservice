@@ -1,12 +1,20 @@
 package com.damine.movieinfoservice.models;
 
 public class Movie {
+    private String movieId;
     private String name;
-    private String movieInfo;
 
-    public Movie(String name, String movieInfo) {
+    public Movie(String movieId, String name) {
+        this.movieId = movieId;
         this.name = name;
-        this.movieInfo = movieInfo;
+    }
+
+    public String getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(String movieId) {
+        this.movieId = movieId;
     }
 
     public String getName() {
@@ -15,13 +23,5 @@ public class Movie {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getMovieInfo() {
-        return movieInfo;
-    }
-
-    public void setMovieInfo(String movieInfo) {
-        this.movieInfo = movieInfo;
     }
 }
