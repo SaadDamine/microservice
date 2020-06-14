@@ -3,6 +3,7 @@ package com.damine.moviecatalogservice.resources;
 import com.damine.moviecatalogservice.models.CatalogItem;
 import com.damine.moviecatalogservice.models.Movie;
 import com.damine.moviecatalogservice.models.Rating;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,11 +17,13 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/catalog")
 public class MovieCatalogResource {
+
+    @Autowired
+    private RestTemplate restTemplate;
+
     @RequestMapping("/{userId}")
     public List<CatalogItem> getCatalog(@PathVariable("userId") String userId){
-        RestTemplate restTemplate=new RestTemplate();
-
-
+        
         //get all rated movies
         List<Rating> ratings= Arrays.asList(
                 new Rating("1",4),
