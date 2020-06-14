@@ -36,7 +36,15 @@ public class MovieCatalogResource {
         // For each movie , call movie info services and get details
 
         return ratings.stream().map(rating ->{
-            Movie movie = restTemplate.getForObject("http://localhost:8082/movies/" + rating, Movie.class);
+            //Movie movie = restTemplate.getForObject("http://localhost:8082/movies/" + rating, Movie.class);
+
+            Movie movie = webClientBuilder.build()
+                    .get()
+                    .uri("http://localhost:8082/movies/" + rating)
+                    .retrieve()
+                    .bodyToMono(Movie.class)
+                    .block();
+
             return new CatalogItem(movie.getName(),"trans des",rating.getRating());})
                 .collect(Collectors.toList());
 
