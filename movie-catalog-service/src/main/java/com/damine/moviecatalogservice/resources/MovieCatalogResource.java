@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/catalog")
 public class MovieCatalogResource {
-    @RequestMapping("/{userId}}")
+    @RequestMapping("/{userId}")
     public List<CatalogItem> getCatalog(@PathVariable("userId") String userId){
         return Collections.singletonList(
                 new CatalogItem("Transformers","trans des",4)
